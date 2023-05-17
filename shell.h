@@ -10,6 +10,7 @@
 #include <signal.h>
 #include <stdio.h>
 
+/* external declaration for the environment variables */
 extern char **environ;
 
 char *_strcat(char *dest, char *src);
