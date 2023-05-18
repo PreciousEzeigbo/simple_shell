@@ -26,14 +26,14 @@ int count_input(char *str);
 int count_delims(char *str, char *del);
 char *remove_new_line(char *str);
 void signal_handler(int sig_id);
-void _open_help(void);
-void _print_env(void);
-void _handle_exit(char **u_token, char *line);
+void open_help(void);
+void print_env(void);
+void handle_exit(char **u_token, char *line);
 int execcommands(char **u_token, char *line);
 void free_get_env(char *env_path);
 void free_token(char **token);
 int exec(char *cname, char **opts);
-char *_getenv(const char *name);
+char *getenv(const char *name);
 char **tokenize(char *str, char *del, int len);
 char *find(char *cname);
 
