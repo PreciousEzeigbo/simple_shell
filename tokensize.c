@@ -17,12 +17,12 @@ char **tokenize(char *str, char *del, int len)
 		return (NULL);
 
 	str = remove_new_line(str);
-	temp = _strdup(str);
+	temp = _strup(str);
 	token = strtok(temp, del);
 
 	while (token)
 	{
-		tokens[i] = _strdup(token);
+		tokens[i] = _strup(token);
 		token = strtok(NULL, del);
 		i++;
 	}

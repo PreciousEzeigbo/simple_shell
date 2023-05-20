@@ -10,7 +10,7 @@
 int execcommands(char **u_token, char *line)
 {
 	int i = 0;
-	char *Builtincmds[] = { "exit", 'cd', 'help', 'env', NULL };
+	char *Builtincmds[] = { "exit", "cd", "help", "env", NULL };
 
 	while (Builtincmds[i])
 	{
@@ -20,6 +20,7 @@ int execcommands(char **u_token, char *line)
 			{
 				case 0:
 					handle_exit(u_token, line);
+					break;
 				case 1:
 					chdir(u_token[1]);
 					return (1);

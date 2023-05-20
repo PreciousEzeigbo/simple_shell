@@ -42,7 +42,7 @@ int count_delims(char *str, char *del)
 		{
 			if (str[j] == del[i])
 				cw++;
-			j++
+			j++;
 		}
 		i++;
 	}

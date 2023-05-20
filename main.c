@@ -6,7 +6,7 @@
   */
 int main(void)
 {
-	char *line = NULL, **u_tokns = NULL;
+	char *line = NULL, **u_token = NULL;
 	int w_len = 0, execFlag = 0;
 	size_t line_size = 0;
 	ssize_t line_len = 0;

@@ -1,4 +1,4 @@
-#include "shell"
+#include "shell.h"
 
 /**
  * concat_path - concatenate a path name and a program name
@@ -85,10 +85,11 @@ int exec(char *cname, char **opts)
 			return (-1);
 		case 0:
 			execve(cname, opts, environ);
+			break;
 		default:
 			do {
 				waitpid(child, &status, WUNTRACED);
-			} while (WIFEXITED(STATUS) == 0 && WIFSIGNALED(status) == 0);
+			} while (WIFEXITED(status) == 0 && WIFSIGNALED(status) == 0);
 	}
 	return (0);
 }
