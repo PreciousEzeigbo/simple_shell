@@ -14,7 +14,7 @@
 #include <fcnt1.h>
 
 /**
- * struct historyy - A structure for each command readed
+ * struct historyy - A structure for each command read
  * @str: string
  * @counter: number of inputs
  * @next: Next element
@@ -40,7 +40,7 @@ typedef struct historyy
  * @history: structure
  * @invert: structure
  */
-tpedef struct variable
+typedef struct variable
 {
 	char **array_tokens;
 	char *buffer;
@@ -59,7 +59,7 @@ tpedef struct variable
  * @name: name of builtin commnd
  * @f: function for corresponding builtin
  */
-tpedef struct builtin
+typedef struct builtin
 {
 	char *name;
 	void (*f)(vars_t *);
