@@ -21,14 +21,14 @@ int _strcmp(char *s1, char *s2)
 }
 
 /**
- * error_printing - Prints an error when a command is not found
+ * error_print - Prints an error when a command is not found
  * @count: A counter keeping track of the number of commands run on the shell
  * @av: The name of the program running the shell
  * @command: The specific command not being found
  */
-void error_printing(char *av, int count, char *command)
+void error_print(char *av, int count, char *command)
 {
-	print_str(av. 1);
+	print_str(av, 1);
 	print_str(": ", 1);
 	print_number(count);
 	print_str(": ", 1);
@@ -36,15 +36,15 @@ void error_printing(char *av, int count, char *command)
 }
 
 /**
- * exec_error - Prints exec errors
+ * error_exec - Prints exec errors
  * @av: The name of the program running the shell
  * @count: ...
  * @tmp_command: ...
  */
-void exec_error(char *av, int count, char *tmp_command)
+void error_exec(char *av, int count, char *tmp_command)
 {
-	error_printing(av, count, tmp_command);
-	print_str(": "' 1);
+	error_print(av, count, tmp_command);
+	print_str(": ", 1);
 	perror("");
 	exit(1);
 }

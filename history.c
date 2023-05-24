@@ -1,24 +1,24 @@
 #include "main.h"
 
 /**
- * *add_nodeint - Add node in the begining
+ * *add_node - Add node in the begining
  * @head: The pointer of the history list
  * @str: ...
  * Return: ON success 1
  */
-void *add_nodeint(history_t **head, char *str)
+void *add_node(history_t **head, char *str)
 {
 	history_t *new = malloc(sizeof(history_t));
 	history_t *copy = *head;
 
 	if (!new)
 	{
-		free_listint(*head);
+		free_list(*head);
 	}
-	new->str = _strdup(str);
+	new->str = _strup(str);
 	if (new->str == NULL)
 	{
-		free_listint(*head);
+		free_list(*head);
 	}
 	new->next = NULL;
 	if (!*head)
@@ -36,12 +36,12 @@ void *add_nodeint(history_t **head, char *str)
 }
 
 /**
- * free_listint - free pointers related with amalloc
+ * free_list - free pointers related with amalloc
  * @head: The ponter of the list
  *
  * Return: The number of elemntentss im the list
  */
-void free_listint(history_t *head)
+void free_list(history_t *head)
 {
 	history_t *delete;
 
@@ -65,15 +65,15 @@ void free_listint(history_t *head)
 void new_history(vars_t *vars)
 {
 	history_t *tmp = vars->history;
-	history_t tmp2 = vars->history;
+	history_t *tmp2 = vars->history;
 	int i = 0, z = 1;
 	unsigned int counter = 0;
-	char *counnt;
+	char *count;
 
-	if (vars->array_token[1] != NULL)
+	if (vars->array_tokens[1] != NULL)
 	{
-		prints_error_msg(vars. ": Command not found: ");
-		print_message(vars->array_token[1]);
+		prints_error_msg(vars, ": Command not found: ");
+		print_message(vars->array_tokens[1]);
 		print_message("\n");
 		return;
 	}
@@ -87,27 +87,27 @@ void new_history(vars_t *vars)
 		while (z < i)
 		{
 			counter++;
-			count = integer_converter(counrt);
-			print_meassage(count);
+			count = integer_converter(counter);
+			print_message(count);
 			print_message("  ");
-			_puts3(tmp2->next);
+			_putss(tmp2->str);
+			tmp2 = tmp2->next;
 			z++;
-
 			free(count);
 		}
 		tmp2 = tmp2->next;
 		vars->invert = tmp2;
-		free_listint(tmp);
-		free_lidtrnt(tmp2);
+		free_list(tmp);
+		free_list(tmp2);
 		return;
 	}
 }
 /**
- * _puts3 - writes a string to standard output
+ * _putss - writes a string to standard output
  * @str: ...
  * Return: number of chars printed or -1 on faiklure
  */
-ssize_t _puts3(char *str)
+ssize_t _putss(char *str)
 {
 	ssize_t i, len;
 

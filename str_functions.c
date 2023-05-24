@@ -3,38 +3,37 @@
 
 /***** RETURNS A POINTER TO A NEW STRING ******/
 /**
- * _strdup - returns pointer to new mem alloc space which contains copy
- * @strtodup: string to be duplicated
+ * _strup - returns pointer to new mem alloc space which contains copy
+ * @strtdup: string to be duplicated
  * Return: a pointer to the new duplicated string
  */
-char *_strdup(char *strtodup)
+char *_strup(char *strtdup)
 {
 	char *copy;
 
 		int len, i;
 
-	if (strtodup == 0)
+	if (strtdup == 0)
 		return (0);
 
-	for (len = 0; strtodup[len]; len++)
+	for (len = 0; strtdup[len]; len++)
 		;
 	copy = malloc((len + 1) * sizeof(char));
 
 	for (i = 0; i <= len; i++)
-		copy[i] = strtodup[i];
-
-return (copy);
+		copy[i] = strtdup[i];
+	return (copy);
 }
 
 
 /****** COMPARES TWO STRINGS *****/
 /**
- * _strcmpr - compares two strings
+ * _strcmp - compares two strings
  * @strcmp1: first string, of two, to be compared in length
  * @strcmp2: second string, of two, to be compared
  * Return: 0 on success, anything else is a failure
  */
-int _strcmpr(char *strcmp1, char *strcmp2)
+int _strcmp(char *strcmp1, char *strcmp2)
 {
 	int i;
 
@@ -97,9 +96,9 @@ char *_strcat(char *strc1, char *strc2)
  *
  * Return: number of chars printed or -1 on failure
  */
-ssize_t _puts(char *str)
+size_t _puts(char *str)
 {
-	ssize_t i, len;
+	size_t i, len;
 
 	for (i = 0; str[i]; i++)
 		;

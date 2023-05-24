@@ -31,7 +31,7 @@ int main(int argc __attribute__((unused)), char **argv, char **environment)
 	vars_t vars = {NULL, NULL, 0, NULL, 0, NULL, NULL, NULL, NULL};
 
 	vars.argv = argv;
-	vars.env = make_enviroment(environment);
+	vars.env = make_environment(environment);
 
 	signal(SIGINT, sig_handler);
 
@@ -44,14 +44,14 @@ int main(int argc __attribute__((unused)), char **argv, char **environment)
 	while (getline(&(vars.buffer), &len_buffer, stdin) != -1)
 	{
 		vars.counter++;
-		vars.commands = tokenizer(vars.buffer, ";");
+		vars.commands = tokensize(vars.buffer, ";");
 		for (i = 0; vars.commands && vars.commands[i] != NULL; i++)
 		{
-			vars.array_tokens = tokenizer(vars.commands[i], " \t\r\n\a");
+			vars.array_tokens = tokensize(vars.commands[i], " \t\r\n\a");
 			if (vars.array_tokens && vars.array_tokens[0])
-				if (check_for_builtins(&vars) == NULL)
+				if (chaeck_for_buitin(&vars) == NULL)
 				{
-					fork_child(vars);
+					fork_kid(vars);
 				}
 			free(vars.array_tokens);
 		}

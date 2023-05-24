@@ -9,9 +9,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
-#include <limit.h>
+#include <limits.h>
 #include <signal.h>
-#include <fcnt1.h>
+#include <fcntl.h>
 
 /**
  * struct historyy - A structure for each command read
@@ -66,8 +66,8 @@ typedef struct builtin
 } builtin_t;
 
 char *_strup(char *strtdup);
-int _strcmp(char *strcmp1, char *strcmp1);
-char *strcat(char *strc1, char *strc2);
+int _strcmp(char *strcmp1, char *strcmp2);
+char *_strcat(char *strc1, char *strc2);
 size_t _puts(char *str);
 int _strlen(char *str);
 void print_str(char *str, int new_line);
@@ -75,11 +75,12 @@ int _write_char(char c);
 int print_number(int n);
 
 void (*chaeck_for_buitin(vars_t *vars))(vars_t *vars);
-void new_exit(vars_t *vars);
-void _env(vars_t *vars);
-void new_setenv(vars_t *vars);
+void exit_new(vars_t *vars);
+void env_(vars_t *vars);
+void new_set(vars_t *vars);
 void new_help(vars_t *vars);
-void new_cd(vars_t *vars);
+void new_unset(vars_t *vars);
+void cd_new(vars_t *vars);
 
 char **tokensizee(char *buffer, char *delimiter);
 unsigned int check_if_match(char c, const char *str);
@@ -114,29 +115,29 @@ void new_help_alias(vars_t *vars);
 void new_help_else(vars_t *vars);
 
 void new_setenv(vars_t *vars);
-void add_key(vars_t, *vars);
-char *add_value(cahr *key, char *value);
+void add_key(vars_t *vars);
+char *add_value(char *key, char *value);
 char **find_key(char **env, char *key);
 void setenv_cd(char **args, vars_t *vars);
 void chdir_to_env(vars_t *vars, char *str);
 
-void fork_child(vars_t vars);
-char *path_finder(vars_t vars, char *command);
-int find_env_index(vars_t vars, char *str);
+void fork_kid(vars_t vars);
+char *path_fin(vars_t vars, char *command);
+int find_envindex(vars_t vars, char *str);
 char **tokenize_path(vars_t vars, int index, char *str);
-char *search_directories(char **path_tokens, char *command);
+char *search_dir(char **path_tokens, char *command);
 char *build_path(char *directory, char *command);
 
-void error_printing(char *av, int count, char *command);
-void exec_error(char *av, int count, char *tmp_command);
+void error_print(char *av, int count, char *command);
+void error_exec(char *av, int count, char *tmp_command);
 void simple_error(void);
 void print_cd_1(vars_t *vars);
 void print_cd_2(vars_t *vars);
 
 void new_history(vars_t *vars);
-void *add_nodeint(history_t **head, char *str);
-void free_listint(history_t *head);
-ssize_t _puts3(char *str);
+void *add_node(history_t **head, char *str);
+void free_list(history_t *head);
+ssize_t _putss(char *str);
 void print_message(char *str);
 
 void end_of_life(char *buffer);

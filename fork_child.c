@@ -1,50 +1,50 @@
 #include "main.h"
 
 /**
- * fork_child - creates a child in order to execute another program
+ * fork_kid - creates a child in order to execute another program
  * @vars: ...
  */
-void fork_child(vars_t vars)
+void fork_kid(vars_t vars)
 {
 	pid_t id;
 	int status, check;
 	struct stat buf;
-	cha *tmp_command, *command;
+	char *tmp_command, *command;
 
 	id = fork();
 	if (id != 0)
-		wait(7status);
+		wait(&status);
 	else
 	{
-		tmp_command = vars.array_token[0];
-		command = path_finder(vars, vars.array_token[0]);
+		tmp_command = vars.array_tokens[0];
+		command = path_fin(vars, vars.array_tokens[0]);
 		if (command == NULL)
 		{
 			check = stat(tmp_command, &buf);
 			if (check == -1)
 			{
-				error_printing(vars.argv[0], vars.counter, tmp_command);
+				error_print(vars.argv[0], vars.counter, tmp_command);
 				print_str(": not found", 0);
 				exit(100);
 			}
 			command = tmp_command;
 		}
 		vars.array_tokens[0] = command;
-		if (vars.array_token[0] != NULL)
+		if (vars.array_tokens[0] != NULL)
 		{
 			if (execve(vars.array_tokens[0], vars.array_tokens, vars.env) == -1)
-				exec_error(vars.argv[0], vars.counter, tmp_command);
+				error_exec(vars.argv[0], vars.counter, tmp_command);
 		}
 	}
 }
 /**
- * path_finder - Acts as an interface for functions that will be able
+ * path_find - Acts as an interface for functions that will be able
  * to find the full path of a program
  * @command: ...
  * Return: On sucess a string with the full path of the program
  * @vars: structure
  */
-char *path_finder(vars_t vars, char *command)
+char *path_find(vars_t vars, char *command)
 {
 	char *str = "PATH";
 	char *constructed;
@@ -52,12 +52,12 @@ char *path_finder(vars_t vars, char *command)
 	int index, i;
 	char *directory;
 
-	index = find_env_index(vars, str);
-	path_token = tokensize_path(vars, index, str);
+	index = find_envindex(vars, str);
+	path_token = tokenize_path(vars, index, str);
 	if (path_token == NULL)
 		return (NULL);
 
-	directory = search_directories(path_token, command);
+	directory = search_dir(path_token, command);
 	if (directory == NULL)
 	{
 		for (i = 0; path_token[i] != NULL; i++)
@@ -74,18 +74,18 @@ char *path_finder(vars_t vars, char *command)
 		return (NULL);
 	}
 	for (i = 0; path_token[i] != NULL; i++)
-		free(path_tokens[i]);
+		free(path_token[i]);
 	free(path_token);
 	return (constructed);
 }
 
 /**
- * find_env_index - Finds the index of an environmental variable
+ * find_envindex - Finds the index of an environmental variable
  * @vars: ...
  * @str: ...
  * Return: returns the index on success otherwise return -1
  */
-int find_env_index(vars_t vars, char *str)
+int find_envindex(vars_t vars, char *str)
 {
 	int i, len, j;
 
@@ -126,13 +126,13 @@ char **tokenize_path(vars_t vars, int index, char *str)
 	return (path_token);
 }
 /**
- * search_directories - Looks through dir stored in path_tokens
+ * search_dir - Looks through dir stored in path_tokens
  * @path_token: a pointer to array of strings conatining the paths
  * contained in the path
  * @command: Represents a command
  * Return: on success a string with the dir
  */
-char *search_directories(char **path_token, char *command)
+char *search_dir(char **path_token, char *command)
 {
 	int i, s;
 	char *cwd, *buf;

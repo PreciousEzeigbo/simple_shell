@@ -8,7 +8,7 @@
  */
 char **_realoc(char **ptr, size_t *size)
 {
-	cahr **new;
+	char **new;
 	size_t i;
 
 	new = malloc(sizeof(char *) * ((*size) + 10));

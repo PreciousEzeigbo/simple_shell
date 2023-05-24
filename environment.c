@@ -13,15 +13,15 @@ char **make_environment(char **env)
 
 	for (i = 0; env[i] != NULL; i++)
 		;
-	newenironment = malloc(sizeof(char *) * (i + 1));
+	newenvironment = malloc(sizeof(char *) * (i + 1));
 	if (newenvironment == NULL)
 	{
 		perror("Fatal Error");
 		exit(1);
 	}
 	for (i = 0; env[i] != NULL; i++)
-		newenvironment[i] = _strdup(env[i]);
-	newenivronment[i] = NULL;
+		newenvironment[i] = _strup(env[i]);
+	newenvironment[i] = NULL;
 	return (newenvironment);
 }
 /**
@@ -49,6 +49,6 @@ void chdir_to_env(vars_t *vars, char *str)
 	int len, index;
 
 	len = _strlen(str);
-	index = find_env_index(*vars, str);
+	index = find_envindex(*vars, str);
 	chdir((vars->env[index]) + len + 1);
 }

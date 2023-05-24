@@ -11,7 +11,7 @@ void _puts_error(char *str)
 	long num, len;
 
 	num = _strlen(str);
-	len = writes(STDERR_FILENO, str, num);
+	len = write(STDERR_FILENO, str, num);
 	if (len != num)
 	{
 		perror("fatal error");
@@ -31,9 +31,12 @@ void prints_error_msg(vars_t *vars, char *msg)
 
 	_puts_error(vars->argv[0]);
 	_puts_error(": ");
+
+	count = integer_converter(vars->counter);
+	_puts_error(count);
 	free(count);
 	_puts_error(": ");
-	_puts_error(vars->array_token[0]);
+	_puts_error(vars->array_tokens[0]);
 	if (msg)
 	{
 		_puts_error(msg);
@@ -61,8 +64,8 @@ char *integer_converter(unsigned int count)
 		perror("Fatal Error");
 		exit(100);
 	}
-	numstr[digit] = '\0';
-	for (--digit; count; --digits)
+	numstr[digits] = '\0';
+	for (--digits; count; --digits)
 	{
 		numstr[digits] = (count % 10) + '0';
 		count /= 10;

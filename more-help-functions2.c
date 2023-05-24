@@ -12,7 +12,7 @@ void new_help_alias(vars_t *vars)
 	int fd, r;
 	char *s;
 
-	if (_strcmpr(vars->array_tokens[1], "alias") == 0)
+	if (_strcmp(vars->array_tokens[1], "alias") == 0)
 	{
 		file = "/home/shell_test/shelltestenviroment/helpfiles/alias";
 		fd = open(file, O_RDWR);
