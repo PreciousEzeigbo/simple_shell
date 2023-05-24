@@ -66,13 +66,14 @@ typedef struct builtin
 } builtin_t;
 
 char *_strup(char *strtdup);
-int _strcmp(char *strcmp1, char *strcmp2);
+int _strcmpr(char *strcmp1, char *strcmp2);
 char *_strcat(char *strc1, char *strc2);
 size_t _puts(char *str);
 int _strlen(char *str);
 void print_str(char *str, int new_line);
 int _write_char(char c);
 int print_number(int n);
+
 
 void (*chaeck_for_buitin(vars_t *vars))(vars_t *vars);
 void exit_new(vars_t *vars);

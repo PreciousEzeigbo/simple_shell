@@ -33,7 +33,7 @@ char *_strup(char *strtdup)
  * @strcmp2: second string, of two, to be compared
  * Return: 0 on success, anything else is a failure
  */
-int _strcmp(char *strcmp1, char *strcmp2)
+int _strcmpr(char *strcmp1, char *strcmp2)
 {
 	int i;
 

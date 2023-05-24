@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * tokenizer - tokenizes a buffer with a delimiter
+ * tokensizee - tokenizes a buffer with a delimiter
  * @buffer: buffer to tokenize
  * @delimiter: delimiter to tokenize along
  *
  * Return: pointer to an array of pointers to the tokens
  */
-char **tokenizer(char *buffer, char *delimiter)
+char **tokensizee(char *buffer, char *delimiter)
 {
 	char **tokens = NULL;
 	size_t i = 0, mcount = 10;
@@ -38,13 +38,13 @@ char **tokenizer(char *buffer, char *delimiter)
 }
 
 /**
- * tokenize - tokenizes a buffer with a delimiter just use for for_child
+ * tokensize - tokenizes a buffer with a delimiter just use for for_child
  * @line: buffer to tokenize
  * @delimiter: delimiter to tokenize along
  * @token_count: token count, size.
  * Return: pointer to an array of pointers to the tokens
  */
-char **tokenize(int token_count, char *line, const char *delimiter)
+char **tokensize(int token_count, char *line, const char *delimiter)
 {
 	int i;
 	char **buffer;
@@ -83,7 +83,7 @@ char **token_interface(char *line, const char *delimiter, int token_count)
 		free(line);
 		return (NULL);
 	}
-	vars.array_tokens = tokenize(token_count, line, delimiter);
+	vars.array_tokens = tokensize(token_count, line, delimiter);
 	if (vars.array_tokens == NULL)
 	{
 		free(line);

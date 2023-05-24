@@ -38,13 +38,13 @@ void fork_kid(vars_t vars)
 	}
 }
 /**
- * path_find - Acts as an interface for functions that will be able
+ * path_fin - Acts as an interface for functions that will be able
  * to find the full path of a program
  * @command: ...
  * Return: On sucess a string with the full path of the program
  * @vars: structure
  */
-char *path_find(vars_t vars, char *command)
+char *path_fin(vars_t vars, char *command)
 {
 	char *str = "PATH";
 	char *constructed;

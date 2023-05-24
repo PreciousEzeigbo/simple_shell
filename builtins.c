@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * chaeck_for_builtin - checks if the command is a builtin
+ * chaeck_for_buitin - checks if the command is a builtin
  * @vars: variables
  * Return: pointer to the function or NULL
  */
-void (*chaeck_for_builtin(vars_t *vars))(vars_t *vars)
+void (*chaeck_for_buitin(vars_t *vars))(vars_t *vars)
 {
 	unsigned int i;
 	builtin_t check[] = {
@@ -19,7 +19,7 @@ void (*chaeck_for_builtin(vars_t *vars))(vars_t *vars)
 		{NULL, NULL}};
 	for (i = 0; check[i].f != NULL; i++)
 	{
-		if (_strcmp(vars->array_tokens[0], check[i].name) == 0)
+		if (_strcmpr(vars->array_tokens[0], check[i].name) == 0)
 			break;
 	}
 	if (check[i].f != NULL)
@@ -36,7 +36,7 @@ void exit_new(vars_t *vars)
 {
 	int status;
 
-	if (_strcmp(vars->array_tokens[0], "exit") ==
+	if (_strcmpr(vars->array_tokens[0], "exit") ==
 			0 &&
 		vars->array_tokens[1] != NULL)
 
@@ -132,6 +132,12 @@ void new_unset(vars_t *vars)
 	{
 		prints_error_msg(vars, ": Incorrect number of arguments\n");
 		vars->status = 2;
+		return;
+	}
+	key = find_key(vars->env, vars->array_tokens[1]);
+	if (key == NULL)
+	{
+		prints_error_msg(vars, ":No variable to unset");
 		return;
 	}
 	for (i = 0; vars->env[i] != NULL; i++)
