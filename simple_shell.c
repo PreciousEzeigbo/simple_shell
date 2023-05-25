@@ -47,7 +47,8 @@ int main(int argc __attribute__((unused)), char **argv, char **environment)
 		vars.commands = tokensize(count_token(vars.buffer, ";"), vars.buffer, ";");
 		for (i = 0; vars.commands && vars.commands[i] != NULL; i++)
 		{
-			vars.array_tokens = tokensize(count_token(vars.commands[i], " \t\r\n\a"), vars.commands[i], "\t\r\n\a");
+			vars.array_tokens = tokensize(count_token(vars.commands[i],
+						" \t\r\n\a"), vars.commands[i], "\t\r\n\a");
 			if (vars.array_tokens && vars.array_tokens[0])
 				if (chaeck_for_buitin(&vars) == NULL)
 				{

@@ -114,7 +114,7 @@ void new_help_unset(vars_t *vars)
 		new_help_unsentenv(vars);
 }
 /**
- * new_help_unsetenv - help builtin command unsetenv
+ * new_help_unsentenv - help builtin command unsentenv
  * @vars: if command matches a builtin name, text file is sent to stdout
  * Return: 0 if sucess
  */
