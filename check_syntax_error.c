@@ -38,10 +38,8 @@ int error_sep_op(char *input, int i, char last)
 
 	if (*input == '|')
 	{
-		count = repeated_char(input, 0);
-		if (count == 0 || count > 1)
+		if (last == ';' || last == '&')
 			return (i);
-
 		if (last == '|')
 		{
 			count = repeated_char(input, 0);
